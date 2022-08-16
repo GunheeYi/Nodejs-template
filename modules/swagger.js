@@ -7,7 +7,7 @@ const swaggerDefinition = {
     version: "1.0.0",
     description: "test",
   },
-  host: "localhost:4000",
+  host: "http://ori5ri.shop",
   basePath: "/",
   securityDefinitions: {
     jwt: {
