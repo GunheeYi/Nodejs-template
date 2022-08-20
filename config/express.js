@@ -5,6 +5,9 @@ const cors = require("cors");
 const { swaggerUi, specs } = require("../modules/swagger");
 // import
 import testRouter from "../src/app/Test/testRoute";
+import userRouter from "../src/app/User/userRoute";
+import seatRouter from "../src/app/Seat/seatRoute";
+import ticketRouter from "../src/app/Ticket/ticketRoute";
 
 module.exports = function () {
   const app = express();
@@ -27,6 +30,9 @@ module.exports = function () {
 
   // 0. Test API
   app.use("/test", testRouter);
-
+  app.use("/user", userRouter);
+  app.use("/seat", seatRouter);
+  app.use("/ticket",ticketRouter);
+  
   return app;
 };
