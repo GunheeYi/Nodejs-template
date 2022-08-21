@@ -8,4 +8,6 @@ userRouter.post("/", user.postUser);
 
 userRouter.get("/ticket", user.getTicket);
 
+userRouter.get("/token", user.getToken);
+
 export default userRouter;

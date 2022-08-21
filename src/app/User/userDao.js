@@ -32,7 +32,21 @@ async function selectRemainTickets(connection, userId) {
     return remainTicketsResult;
 }
 
+// token-userId
+async function selectToken(connection, token) {
+    const selectTokenQuery = `
+    SELECT humanId
+    FROM Human
+    WHERE token=?;
+
+    `;
+    const [tokenResult] = await connection.query(selectTokenQuery, token);
+
+    return tokenResult[0];
+}
 
 
 
-module.exports = { selectUser, insertUser, selectRemainTickets };
+
+
+module.exports = { selectUser, insertUser, selectRemainTickets, selectToken };

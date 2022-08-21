@@ -33,3 +33,19 @@ exports.retrieveTicket = async function (id){
         connection.release();
     }
 }
+
+exports.retrieveToken = async function(token){
+    const connection = await pool.getConnection(async (conn) => conn);
+
+    try {
+        const ticketResult = await userDao.selectToken(connection, token);
+        console.log(ticketResult);
+        return response(baseResponse.SUCCESS, ticketResult);
+        
+    } catch (err) {
+        console.log(err.message);
+        return errResponse(baseResponse.FAILURE);
+    } finally {
+        connection.release();
+    }
+}

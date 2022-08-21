@@ -37,6 +37,7 @@ exports.postUser = async function (req, res) {
 exports.getTicket = async function (req, res) {
     // query, path variable, body
     const { userId } = req.query;
+    
 
     console.log(userId);
     // validation
@@ -48,3 +49,18 @@ exports.getTicket = async function (req, res) {
     const getTicketResponse = await userProvider.retrieveTicket(userId);
     return res.send(getTicketResponse);
 }   
+
+
+// [GET] user/token?token=#
+exports.getToken = async function (req, res){
+    const {token} = req.query;
+    console.log(token)
+    
+    if(!token){
+        return res.send(errResponse(baseResponse.FAILURE));
+    }
+
+    const getTokenResponse  = await userProvider.retrieveToken(token);
+    return res.send(getTokenResponse);
+    
+}
